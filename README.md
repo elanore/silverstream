@@ -72,8 +72,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - create react app
 - configured tailwindcss
 - Header
+- Routing
 - login form
 - sign up form
+- validation of the form fields
+- useRef hook
 - #Features:
 - sign in /sign up page
     - sign in /sign up page
