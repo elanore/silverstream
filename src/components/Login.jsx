@@ -5,7 +5,7 @@ import {checkValidData} from "../utils/validate";
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const [errorMessage,setErrorMessage] =useState(null)
-
+  const name =useRef(null);
   const email = useRef(null);
   const password = useRef(null);
 
@@ -22,6 +22,8 @@ const Login = () => {
     const message = checkValidData(email.current.value, password.current.value);
     //console.log(message);
     setErrorMessage(message);
+    //sign in / sign up
+
   };
 
   return (
@@ -33,12 +35,16 @@ const Login = () => {
           alt="background"
         />
       </div>
-      <form onSubmit={(e)=>e.preventDefault()}  className="absolute p-12 bg-black w-3/12 my-36 mx-auto right-0 left-0 text-white bg-opacity-70">
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="absolute p-12 bg-black w-3/12 my-36 mx-auto right-0 left-0 text-white bg-opacity-70"
+      >
         <h1 className="font-bold text-3xl py-2">
           {isSignIn ? "Sign In" : "Sign Up"}
         </h1>
         {!isSignIn && (
           <input
+            ref={name}
             type="text"
             placeholder="Name"
             className="p-4 m-2 w-full bg-gray-700 opacity-60 rounded-lg"
@@ -56,9 +62,12 @@ const Login = () => {
           placeholder="password"
           className="p-4 m-2 w-full bg-gray-700 opacity-60 rounded-lg"
         />
-        <p className="text-red-600">{errorMessage}</p>
+        <p className="text-red-400 font-medium">{errorMessage}</p>
 
-        <button className="p-4 m-2 bg-red-700 w-full rounded-lg" onClick={handleForm}>
+        <button
+          className="p-4 m-2 bg-red-700 w-full rounded-lg"
+          onClick={handleForm}
+        >
           {isSignIn ? "Sign In" : "Sign Up"}
         </button>
         <p className="py-4 cursor-pointer" onClick={toggleSignIn}>
