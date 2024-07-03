@@ -5,6 +5,7 @@ import {checkValidData} from "../utils/validate";
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const [errorMessage,setErrorMessage] =useState(null)
+  
   const name =useRef(null);
   const email = useRef(null);
   const password = useRef(null);
@@ -16,7 +17,7 @@ const Login = () => {
   const handleForm =()=>{
     //form validation
     
-
+    //console.log(name);
     //console.log(email);
     //console.log(password);
     const message = checkValidData(email.current.value, password.current.value);
