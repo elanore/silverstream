@@ -20,7 +20,7 @@ const Login = () => {
     //console.log(name);
     //console.log(email);
     //console.log(password);
-    const message = checkValidData(email.current.value, password.current.value);
+    const message = checkValidData(name.current.value, email.current.value, password.current.value);
     //console.log(message);
     setErrorMessage(message);
     //sign in / sign up
