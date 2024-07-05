@@ -77,6 +77,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - sign up form
 - validation of the form fields
 - useRef hook
+- using fire base for authenticating login and hosting
 - #Features:
 - sign in /sign up page
     - sign in /sign up page
