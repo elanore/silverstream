@@ -17,6 +17,7 @@
 - validation of the form fields
 - useRef hook
 - using fire base for authenticating login and hosting
+- sign up user account 
 - #Features:
 - sign in /sign up page
   - sign in /sign up page
