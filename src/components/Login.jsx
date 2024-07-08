@@ -1,12 +1,15 @@
 import React, { useRef, useState } from "react";
 import Header from "./Header";
-import {checkValidData} from "../utils/validate";
+import { checkValidData } from "../utils/validate";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+
+import { auth } from "../utils/firebase";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
-  const [errorMessage,setErrorMessage] =useState(null)
-  
-  const name =useRef(null);
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  //const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
 
@@ -14,17 +17,38 @@ const Login = () => {
     setIsSignIn(!isSignIn);
   };
 
-  const handleForm =()=>{
+  const handleForm = () => {
     //form validation
-    
+
     //console.log(name);
     //console.log(email);
     //console.log(password);
-    const message = checkValidData(name.current.value, email.current.value, password.current.value);
+    const message = checkValidData(email.current.value, password.current.value);
     //console.log(message);
     setErrorMessage(message);
-    //sign in / sign up
 
+    if (message) return;
+
+    if (!isSignIn) {
+      // sign up logic
+      
+      //const auth = getAuth();
+      createUserWithEmailAndPassword(auth,email.current.value, password.current.value)
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log(user,"USER");
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode+" - "+errorMessage);
+          // ..
+        });
+    } else {
+      //sign in logic
+    }
   };
 
   return (
@@ -45,7 +69,7 @@ const Login = () => {
         </h1>
         {!isSignIn && (
           <input
-            ref={name}
+            //ref={name}
             type="text"
             placeholder="Name"
             className="p-4 m-2 w-full bg-gray-700 opacity-60 rounded-lg"
