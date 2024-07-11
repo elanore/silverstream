@@ -19,6 +19,7 @@
 - using fire base for authenticating login and hosting
 - sign up user account 
 - user added using sign up 
+- sign in enabled
 - #Features:
 - sign in /sign up page
   - sign in /sign up page
