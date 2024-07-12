@@ -20,6 +20,8 @@
 - sign up user account 
 - user added using sign up 
 - sign in enabledn
+- redux store created with user slice
+- 
 - #Features:
 - sign in /sign up page
   - sign in /sign up page
