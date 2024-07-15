@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter,useNavigate } from 'react-router-dom';
 import Browse from './Browse';
 import Login from './Login';
 import { RouterProvider } from 'react-router-dom';
@@ -11,6 +11,7 @@ import {addUser, removeUser} from '../utils/userSlice' ;
 
 const Body = () => {
     const dispatch = useDispatch();
+    const  navigate = useNavigate();
 
     const appRouter = createBrowserRouter([
         {
@@ -30,13 +31,16 @@ const Body = () => {
             // https://firebase.google.com/docs/reference/js/auth.user
             const {uid,email,displayname} = user;
             dispatch(addUser({uid:uid,email:email,displayname:displayname}));
+            navigate("/browse");
+
           } else {
             // User is signed out
             dispatch(removeUser());
+            navigate("/");
           }
         });
 
-    },[])
+    }, []);
 
 
   return (
