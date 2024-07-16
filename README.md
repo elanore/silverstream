@@ -21,7 +21,7 @@
 - user added using sign up 
 - sign in enabledn
 - redux store created with user slice
-- 
+-  navigation after sign in and sign out
 - #Features:
 - sign in /sign up page
   - sign in /sign up page
