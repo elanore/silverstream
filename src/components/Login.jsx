@@ -4,6 +4,7 @@ import { checkValidData } from "../utils/validate";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 
 import { auth } from "../utils/firebase";
@@ -14,7 +15,7 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
 
-  //const name = useRef(null);
+  const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
 
@@ -36,32 +37,48 @@ const Login = () => {
 
     if (!isSignIn) {
       // sign up logic
-      
+
       //const auth = getAuth();
-      createUserWithEmailAndPassword(auth,email.current.value, password.current.value)
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-          console.log(user,"USER");
+          updateProfile(user, {
+            displayName: name.current.value,
+            photoURL: "https://avatars.githubusercontent.com/u/6513517?v=4",
+          })
+            .then(() => {
+              navigate("/browse");
+            })
+            .catch((error) => {
+              setErrorMessage(error.message);
+            });
+          console.log(user, "USER");
           navigate("/browse");
           // ...
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setErrorMessage(errorCode+" - "+errorMessage);
+          setErrorMessage(errorCode + " - " + errorMessage);
           // ..
         });
     } else {
       //sign in logic
-      signInWithEmailAndPassword(auth, email.current.value, password.current.value)
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          console.log("USER signin",user);
+          console.log("USER signin", user);
           navigate("/browse");
-
-          
         })
         .catch((error) => {
           const errorCode = error.code;
