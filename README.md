@@ -27,6 +27,7 @@
   - sign in /sign up page
   - redirect to browse page only for valid user
 - browse page only comes after authentication
+- display name set 
   - header
   - main movie
     - trailer in background
