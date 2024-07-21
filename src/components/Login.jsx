@@ -57,8 +57,8 @@ const Login = () => {
             .catch((error) => {
               setErrorMessage(error.message);
             });
-          console.log(user, "USER");
-          navigate("/browse");
+          //console.log(user, "USER");
+          //navigate("/browse");
           // ...
         })
         .catch((error) => {
