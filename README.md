@@ -28,6 +28,8 @@
   - redirect to browse page only for valid user
 - browse page only comes after authentication
 - display name set 
+- sign up bug fix
+
   - header
   - main movie
     - trailer in background
