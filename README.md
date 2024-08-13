@@ -29,7 +29,8 @@
 - browse page only comes after authentication
 - display name set 
 - sign up bug fix
-- unsubscribe to onauthstatechanged
+- unsubscribe to onauthstatechanged call back
+- adding constants 
 
 
   - header
