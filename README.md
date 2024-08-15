@@ -31,6 +31,8 @@
 - sign up bug fix
 - unsubscribe to onauthstatechanged call back
 - adding constants 
+- updating the user avatar
+
 
 
   - header
